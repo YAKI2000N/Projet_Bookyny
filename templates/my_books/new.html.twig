@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Inventory{% endblock %}
+
+{% block body %}
+<div class="bg-image" style="background-image: url('https://i.pinimg.com/564x/69/eb/20/69eb202ad2de758358f579f0737e3410.jpg'); height: 100vh">
+    <div class="container text-center">
+        <h1 style="color: whitesmoke; font-size: 36px; font-weight: bold;">Create new Inventory</h1>
+
+        {{ include('my_books/_form.html.twig') }}
+
+        <div class="row">
+            <div class="col-md-10">
+                <a href="{{ path('Inventory_list') }}" class="btn btn-light mt-3 btn-sm">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

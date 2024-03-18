@@ -1,0 +1,10 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+app_gbooky_books_show:
+    path: /g/booky/{gBooky_id}/books/{books_id}
+    controller: App\Controller\GBookyController::BooksShow
+    methods: ['GET']

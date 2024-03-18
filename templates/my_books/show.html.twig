@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %}The inventory n° {{ mybooks.id }} details{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+   
+        .btn1 {
+            border: 2px solid black;
+            color: black;
+            background-color: transparent;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+<h5> Voulez vous ajoutez un autre livre à votre collection ?</h5>
+ <a href="{{ path('books_new', {'inventory_id': mybooks.id}) }}" class="btn btn-light">create new</a>
+
+    <div class="row">
+        {% for book in mybooks.books %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/books/' ~ book.image) }}" alt="{{ book.title }}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text">{{ book.author }}</p>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm" style="border: 2px solid #5f9ea0; background-color: #5f9ea0 ; color: #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s;">Details</a>
+                            <a href="#" class="btn btn-sm" style="border: 2px solid #5f9ea0; background-color: #5f9ea0 ; color: #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s;">Delete</a>
+                        </div>
+                    </div>
+                    <span class="react-like"></span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('Inventory_list') }}" class="btn btn-light">Back to Inventory</a>
+</body>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="{{ asset('assets/posts.js') }}" type="text/babel"></script>
+    
+{% endblock %}

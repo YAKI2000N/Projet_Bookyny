@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+ 
+    <div class="container">
+    
+       
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+            <h1>Inventories List</h1>
+            {% if is_granted('ROLE_USER') %} 
+                <a href="{{ path('mybooks_new') }}" class="btn btn-dark mt-3 mb-3 btn-sm"> <i class="fas fa-plus-circle"></i> Create new</a>
+            {%endif%}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom de l'inventaire</th>
+                            <th>Date de création</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mybook in mybooks %}
+                            <tr>
+                                <td>{{ mybook.nameINV }}</td>
+                                <td>{{ mybook.Created|date('Y-m-d')}}</td>
+                                <td>{{ mybook.InvDesc }}</td>    
+                                <td>
+                                   <a href="{{ path('MyBooks_show', {'id': mybook.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-eye"></i></a>
+                                   {% if is_granted('ROLE_USER') %}
+                                    <a href="{{ path('mybooks_edit', {'id': mybook.id})}}" class="btn btn-dark text-light btn-sm"><i class="fas fa-edit"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

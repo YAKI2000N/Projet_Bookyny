@@ -1,0 +1,117 @@
+-Tache-----------------------------------|---Etat----|---------Commentaires--------------|
+-----------------------------------------|-----------|         
+1- Initialisation du projet Symfony      |faite      |
+-----------------------------------------|-----------|           
+2- Ajout d'un modéle de données des      | faite     |
+entités :(MyBooks:inventaire et Books:   |           |
+objet) et l'association 1-N entre        |           |
+MyBooks et Books.                        |           |
+-----------------------------------------|-----------|
+3- Ajout de données chargeables avec les | faite     | 
+fixtures pour les deux entités :         |           |
+MyBooks et Books.                        |           |
+-----------------------------------------|-----------| 
+4- Ajout des commandes :                 | faite     | 
+app:list-books et app:list-mybooks pour  |           | 
+tester l'affichage des fixture dans le   |           | 
+terminal.                                |           | 
+-----------------------------------------|-----------|         
+5- ajout d'une interface EasyAdmin dans  | faite     | 
+le back-office avec les 2 contrôleurs    |           | 
+CRUD MyBooks(cablage avec le Dashboard   |           | 
+et Books.Avec la navigation              |           | 
+entre un inventaire et ses objets et     |           | 
+affichage pour chaque livre le nom de    |           |
+l'inventaire auquel il appartient.       |           | 
+-----------------------------------------|-----------|
+6-Ajout de l'entité membre et du lien    | faite     |
+membre-inventaire (1-N).                 |           |
+-----------------------------------------|-----------|
+7-Ajout de controleur MyBooks de         | faite     |
+l'inventaire.                            |           |
+-----------------------------------------|-----------|
+8-Consultation de la liste de tous les   | faite     | 
+inventaires (MyBooks) dans un premier    |           |
+temps (à partir de la méthode ListAction |           |
+et via la route /my/books/list)          |           |
+- consultation d'une fiche de linventaire|           |
+à partir de la liste (par clique)        |           |
+-----------------------------------------|-----------|
+9-  gérer le lien à dérouler entre       | faite     |
+l'inventaire MyBooks et Books(Backoffice)|           |
+ d’une association OneToMany. Avec       |           |
+Association Field affichage d'une        |           | 
+colonne contenant le nombre de livres    |           |
+dans chaque inventaire. Et la liste des  |           |
+objets s'affiche dans quand on clique sur|           | 
+Edit.                                    |           |
+-----------------------------------------|-----------|
+10-Ajout du controleur Crud de l'entité  |faite      |
+Membre et son affichage dans le tableau  |           |
+de bord (avec chargement des data        |           | 
+fixtures de l'entité membre), avec       |           |
+réglage du lien entre membre-inventaire  |           |
+ dans le backoffice.                     |           |
+==> Colonne contiennent nombre           |           |
+d'inventaires pour chaque membre et rendu|           |
+de la page de modification d'un membre.  |           |
+---------------------------------------- |-----------|           
+11- utilisation de gabarits pour les     |           |
+pages de consultation du front-office    | faite     |
+-----------------------------------------|-----------|        
+12- intégration d'une mise en forme CSS  |           | J'ai utilisé ces commandes : composer require symfony/webpack-encore-bundle (Ce bundle facilite l'intégration de Webpack Encore, 
+                                         |           |   qui est un outil de gestion d'assets, ) Puis on installe les dépendances de Webpack avec Npm :npm install
+ avec Bootstrap dans les gabarits Twig   |   faite   | Modifier dans le fichier app.js :import './styles/app.css'; # Par import './styles/app.scss';
+-----------------------------------------|-----------|Allez dans le fichier webpack.config.js à la racine du projet Symfony puis enlevez « // » avant .enableSassLoader() pour activer le SassLoader
+13- intégration de menus de navigation   | fait      | npm install sass-loader node-sass --save-dev ==> Cette ligne de code fait appel au bundle Symfony Webpack Encore pour générer dynamiquement les balises <link> en fonction de la configuration de votre projet. Vous n'avez pas besoin de spécifier manuellement les chemins vers les fichiers CSS dans votre modèle HTML
+-----------------------------------------|-----------| 
+14- ajout de l'entité [galerie] au modèle|           |
+ des données et de l'association M-N     |           |
+avec Books.                              |Fait       | 
+-----------------------------------------|-----------|         
+15- ajout de galerie dans le back-office | Fait      | 
+-----------------------------------------|-----------|
+16-ajout d'un contrôleur CRUD au front-  | Faite     |
+office pour [galerie]                    |           | 
+-----------------------------------------|-----------|
+17- ajout de fonctions CRUD au front-    |Fait       | 
+office pour [inventaire]                 |           |
+-----------------------------------------|-----------|
+18-ajout de la consultation des [objets] |Ca n'a pas | 
+                                         | marché    |
+ depuis les [galeries] publiques         |           |
+ ----------------------------------------|-----------|       
+19-ajout d'un contrôleur CRUD pour Membre|Fait       |
+-----------------------------------------|-----------|
+20-consultation de la liste des seuls    |Fait       |
+ inventaires d'un membre dans le front-  |           |
+ office                                  |           |
+-----------------------------------------|-----------|                                
+21-contextualisation de la création      | Fait      |
+d'[inventaire] en fonction du Membre     |           |
+-----------------------------------------|-----------|
+22-contextualisation de la création d'un |           |
+[objet] en fonction de l'[inventaire]    |Fait       |
+-----------------------------------------|-----------|
+23-ajout des Utiisateurs au modèle de    |Fait       |
+données et du lien utilisateur - membre  |           |
+-----------------------------------------|-----------|
+24-ajout de l'authentification           |Fait       |  
+-----------------------------------------|-----------|    
+25-protection de l'accès aux routes      |Fait       |
+interdites réservées aux membres         |           |
+-----------------------------------------|-----------|
+26-protection de l'accès aux données à   |Fait       |Fait et marche pour le cas d'ADMIN mais pour le cas de USER, 
+ leurs seuls propriétaires               |           | le probléme c'est que meme le proprietaire de l'inventaire n'a 
+ ----------------------------------------|-----------|pas accés sur son inventaire 
+27-contextualisation du chargement des   |Fait       |                                     
+données en fonction de l'utilisateur     |            | 
+ connecté                                |           |
+ ----------------------------------------|-----------|
+28-ajout de la gestion de la mise en     |
+ligne d'images pour des photos dans les  |Fait 
+ [objet]                                 |
+ ----------------------------------------|-----------|
+29-utilisation des messages flash pour   |Fait 
+ les CRUDs                               |
+ ----------------------------------------|-----------|

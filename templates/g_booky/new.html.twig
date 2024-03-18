@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GBooky{% endblock %}
+
+{% block body %}
+<div class="bg-image" style="background-image: url('https://i.pinimg.com/564x/34/e6/52/34e6527b20992df0236d2c8f87910daa.jpg'); height: 100vh">
+    <div class="container text-center">
+        <h1 style="color: whitesmoke; font-size: 36px; font-weight: bold;">Create new Gallery</h1>
+    
+
+        {{ include('g_booky/_form.html.twig') }}
+        <div class="row">
+                <div class="col-md-10">
+                    <a href="{{ path('app_g_booky_index') }}" class="btn btn-light mt-3 btn-sm">Back to List</a>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

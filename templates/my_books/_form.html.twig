@@ -1,0 +1,57 @@
+{% block styles %}
+<style>
+    .form-container {
+        width: 30%; 
+        margin: 0 auto; 
+        padding: 20px; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        background-color: #f5f5f5; 
+    }
+
+    .form-group {
+        margin-bottom: 20px; 
+    }
+
+    .form-label {
+        font-weight: bold; 
+    }
+
+    .form-control {
+        width: 100%; 
+        padding: 10px; 
+        border: 1px solid #ccc;
+        border-radius: 5px; 
+    }
+
+    .btn-save {
+        background-color: #007bff;
+        color: #fff; 
+        border: none; 
+        padding: 10px 20px; 
+        border-radius: 5px; 
+    }
+</style>
+{% endblock %}
+
+{% block form %}
+<div class="form-container">
+    {{ form_start(form, {'attr': {'class': 'custom-form-class'}}) }}
+    <div class="form-group">
+        {{ form_label(form.name_INV, 'Inventory name', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(form.name_INV, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.Created, 'Date of creation', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(form.Created, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.InvDesc, 'Description', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(form.InvDesc, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn btn-dark btn-sm">
+        <i class="fas fa-save"></i> {{ button_label|default('Save') }}
+    </button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

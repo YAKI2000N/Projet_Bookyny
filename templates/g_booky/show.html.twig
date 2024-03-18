@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GBooky{% endblock %}
+
+{% block body %}
+    <h1>GBooky</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ g_booky.id }}</td>
+            </tr>
+            <tr>
+                <th>GDescription</th>
+                <td>{{ g_booky.GDescription }}</td>
+            </tr>
+            <tr>
+                <th>Published</th>
+                <td>{{ g_booky.Published ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_g_booky_index') }}" class="btn btn-dark text-light btn-sm">back to list</a>
+
+    <a href="{{ path('app_g_booky_edit', {'id': g_booky.id}) }}" class="btn btn-dark text-light btn-sm">edit</a>
+
+    {{ include('g_booky/_delete_form.html.twig') }}
+    
+
+{% endblock %}

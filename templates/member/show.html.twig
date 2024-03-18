@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>{{ membre.Name }} Inventories</h1>
+                <a href="{{ path('mybooks_new', {'id': membre.id}) }}" class="btn btn-light">Add New Inventory</a>
+                {% for mybooks in membre.member %}
+                    <div class="card mb-3">
+                        <div class="card-header">
+                             <h5 class="card-title">{{ mybooks.NameINV }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="content-center">
+                                <a href="{{ path('MyBooks_show', {'id': mybooks.id}) }}" class="btn" style="border: 2px solid #5f9ea0; background-color: #5f9ea0 ; color: #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s;">Show the content of your inventory</a> 
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <a href="{{ path('app_member')}}" class="btn btn-light">Back To members List</a></div>
+            </div>
+             
+        </div>
+        
+    </div>
+{% endblock %}

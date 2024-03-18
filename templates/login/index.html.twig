@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{# ... #}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# Include Bootstrap CSS here if not already included #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        .login-container {
+            width: 300px;
+            margin-top: 8rem; /* Add margin to separate from the navbar */
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin-left: 35rem;
+        }
+
+        .form-outline {
+            margin-bottom: 1rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <div class="login-container">
+        <form action="{{ path('app_login') }}" method="post">
+            <div class="form-outline">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+            </div>
+
+            <div class="form-outline">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" class="form-control"/>
+            </div>
+
+            {# If you want to control the URL the user is redirected to on success
+            <input type="hidden" name="_target_path" value="/account"/> #}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button type="submit" class="btn btn-block" style="border: 2px solid #5f9ea0; background-color: #5f9ea0 ; color: #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s, color 0.3s;">Login</button>
+        </form>
+    </div>
+{% endblock %}

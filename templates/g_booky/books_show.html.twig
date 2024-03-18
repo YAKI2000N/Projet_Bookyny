@@ -1,0 +1,15 @@
+{% extends "base.html.twig"%}
+{% block title %}Galerie{% endblock %}
+
+{% block body %}
+    <h2>Books</h2>
+            <ul>
+            {% for books in gBooky.books %}
+            <li>
+                <a href="{{ path('app_gbooky_books_show', {'gBooky_id': gBooky.id, 'books_id' : books.id}) }}">{{ books.id }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+    <a href="{{ path('app_g_booky_show', { 'id': gBooky.id}) }}">back to galerie</a>
+
+{% endblock %}

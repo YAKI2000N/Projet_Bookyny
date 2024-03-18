@@ -1,0 +1,84 @@
+
+{% block styles %}
+<style>
+    .form-container {
+        width: 30%; 
+        margin: 0 auto; 
+        padding: 20px; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        background-color: #f5f5f5; 
+    }
+
+    .form-group {
+        margin-bottom: 20px; 
+    }
+
+    .form-label {
+        font-weight: bold; 
+    }
+
+    .form-control {
+        width: 100%; 
+        padding: 10px; 
+        border: 1px solid #ccc;
+        border-radius: 5px; 
+    }
+
+    .btn-save {
+        background-color: #007bff;
+        color: #fff; 
+        border: none; 
+        padding: 10px 20px; 
+        border-radius: 5px; 
+    }
+</style>
+{% endblock %}
+
+{% block form %}
+    <div class="form-container">
+        <form method="{{ form.vars.method }}" action="{{ form.vars.action }}" class="custom-form-class">
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.title, 'Title', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.author, 'Author', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+            </div>
+             <div class="form-group">
+                {{ form_label(form.bookDesc, 'Description', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.bookDesc, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.note, 'Note', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.dateDeparution, 'Date de Parution', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.dateDeparution, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(form.image, 'Book Cover', {'label_attr': {'style': 'font-weight: bold;'}}) }}
+                {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.image) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form._token) }}
+            </div>
+
+            <button class="btn btn-dark btn-sm" type="submit">
+                <i class="fas fa-save"></i> {{ button_label|default('Save') }}
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+

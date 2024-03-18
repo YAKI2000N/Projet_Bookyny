@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GBooky index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h1>Gallery list</h1>
+            {% if is_granted('ROLE_USER') %} 
+                <a href="{{ path('app_g_booky_new') }}" class="btn btn-dark mt-3 mb-3 btn-sm"> <i class="fas fa-plus-circle"></i> Create new</a>
+            {% endif %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>GDescription</th>
+                        <th>Published</th>
+                        <th>actions</th>
+                        <th>Books</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for g_booky in g_bookies %}
+                    <tr>
+                        <td>{{ g_booky.id }}</td>
+                        <td>{{ g_booky.GDescription }}</td>
+                        <td>{{ g_booky.Published ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <a href="{{ path('app_g_booky_show', {'id': g_booky.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-eye"></i>show</a>
+                            {% if is_granted('ROLE_USER') %}
+                            <a href="{{ path('app_g_booky_edit', {'id': g_booky.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-edit"></i>edit</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% for books in g_booky.books %}
+                                <a href="{{ path('app_gbooky_books_show', {'gBooky_id': g_booky.id, 'books_id': books.id}) }}">Book_id : {{books.id}}</a>
+                            {% endfor %}
+                         </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

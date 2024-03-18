@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des livres {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .btn1 {
+            border: 2px solid black;
+            color: black;
+            background-color: transparent;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .details {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<h2> Bienvenue dans la liste des livres que notre site offre ! </h2>
+    <div class="row">
+        {% for book in books %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/books/' ~ book.image) }}" alt="{{ book.title }}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text">{{ book.author }}</p>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn1" data-toggle="details{{ loop.index }}">Details</a>
+                        </div>
+                    </div>
+                    <div class="details" id="details{{ loop.index }}">
+                        <p>Note: {{ book.note}}</p>
+                        <p>Published Year: {{ book.dateDeparution |date('Y-m-d') }}</p>
+                         <p>Description: {{ book.bookDesc }}</p>
+
+                    </div>
+                   
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn1').click(function() {
+                var detailsId = $(this).data('toggle');
+                $('#' + detailsId).toggle();
+            });
+        });
+    </script>
+{% endblock %}
